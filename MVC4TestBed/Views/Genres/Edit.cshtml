@@ -1,0 +1,27 @@
+@using MVC4TestBed.Models;
+
+@model Genre
+
+@{
+	Layout = "../Shared/_SettingsLayout.cshtml";
+}
+
+@{
+    ViewBag.NavMainMenu = Navigation.NavMainMenu.Admin;
+    ViewBag.NavSettingsSidebar = Navigation.NavSettingsSidebar.Genres;
+}
+					
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true)
+	<fieldset>
+		<legend>Edit Genre</legend>
+
+		@Html.HiddenFor(model => model.GenreId)
+		@Html.Partial("_CreateOrEdit", Model)
+
+		<div class="form-actions">
+			<button type="submit" class="btn btn-secondary">Save changes</button>
+			<a href=@Url.Action("Index", "Genres") class="btn">Cancel</a>
+		</div>
+	</fieldset>
+}

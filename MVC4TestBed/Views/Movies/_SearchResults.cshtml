@@ -1,0 +1,66 @@
+﻿@model MVC4TestBed.Models.MovieSearch
+
+<legend>Movies</legend>
+
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Genre
+            </th>
+            <th>
+                Year
+            </th>
+            <th></th> <!-- Actions -->
+        </tr>
+    </thead>
+
+    @foreach (var item in Model.MovieSearchResults)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @item.MovieTitle
+                </td>
+                <td>
+                    @item.Genre.GenreName
+                </td>
+                <td>
+                    @item.Year
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Movies", new {id = item.MovieId})" 
+                       rel="tooltip" data-placement="top" data-original-title="Edit">
+                        <i class="icon-edit"></i>
+                    </a>
+                    <a href="#deleteModal" data-toggle="modal"
+                       rel="tooltip" data-placement="top" data-original-title="Delete" class="delete">
+                        <i class="icon-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    } <!-- foreach -->
+
+</table>
+
+<div class="modal hide fade" id="deleteModal" aria-hidden="true">
+    
+    <div class="modal-header">
+        <h3>Confirm Delete</h3>
+    </div>
+    
+    <div class="modal-body">
+        <p>Are you sure you wish to delete the item?</p>
+    </div>
+    
+    <div class="modal-footer">
+        <a href="javascript:;" class="btn" data-dismiss="modal">No</a>
+        <a href="javascript:;" class="btn btn-danger">Yes</a>
+    </div>
+
+</div>
+

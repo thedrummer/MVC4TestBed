@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>@ViewBag.Title | MVC 4 Test Bed</title>
+	
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">    
+	
+        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/Bootstrap")
+        @Styles.Render("~/Content/Site")
+        @RenderSection("PageScripts",false)
+
+    </head>
+
+    <body>
+	
+        <div id="wrapper">
+	
+            @Html.Partial("_NavTopPartial")
+		
+            <div id="header">
+	
+                @Html.Partial("_NavSubPartial")
+        
+            </div> <!-- /#header -->
+        
+            <div id="body">
+
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.Partial("_MastHeadPartial")
+                }
+	
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+
+            </div> <!-- /#body -->
+
+        </div> <!-- /#wrapper -->
+
+        <div id="footer">
+		
+            @Html.Partial("_FooterPartial")
+	
+        </div> <!-- /#footer -->
+    
+        @Scripts.Render("~/Script/Bootstrap")
+
+        @RenderSection("scripts", required: false)
+
+    </body>
+</html>
+

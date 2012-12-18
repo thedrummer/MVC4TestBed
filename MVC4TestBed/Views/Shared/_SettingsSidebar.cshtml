@@ -1,0 +1,24 @@
+﻿@using MVC4TestBed.Models;
+
+<ul class="nav nav-tabs nav-stacked">
+
+    <li class="@if (@ViewBag.NavSettingsSidebar == Navigation.NavSettingsSidebar.Genres)
+                { @Html.Raw("active")
+                }" >
+        <a href="@Url.Action("Index", "Genres")">
+            <i class="icon-film"></i>
+            Genres
+			<i class="icon-chevron-right"></i>
+        </a>
+    </li>
+    <li class="@if (@ViewBag.NavSettingsSidebar == Navigation.NavSettingsSidebar.Users)
+                { @Html.Raw("active")
+                }" >
+        <a href="#">
+            <i class="icon-user"></i>
+            Users
+			<i class="icon-chevron-right"></i>
+        </a>
+    </li>
+
+</ul>

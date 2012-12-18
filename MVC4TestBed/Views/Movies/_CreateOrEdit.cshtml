@@ -1,0 +1,47 @@
+@model MVC4TestBed.Models.Movie
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MovieTitle)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.MovieTitle)
+    @Html.ValidationMessageFor(model => model.MovieTitle)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Year)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Year)
+    @Html.ValidationMessageFor(model => model.Year)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.IsArchived)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.IsArchived)
+    @Html.ValidationMessageFor(model => model.IsArchived)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ArchivedDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ArchivedDate)
+    @Html.ValidationMessageFor(model => model.ArchivedDate)
+</div>
+
+<div class="editor-label">
+    Genre
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.GenreId, ((IEnumerable<MVC4TestBed.Models.Genre>)ViewBag.PossibleGenres).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.GenreId.ToString(),
+        Selected = (Model != null) && (option.GenreId == Model.GenreId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.GenreId)
+</div>

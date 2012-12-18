@@ -1,0 +1,26 @@
+@model MVC4TestBed.Models.Genre
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Genre</legend>
+
+    <div class="display-label">GenreName</div>
+    <div class="display-field">@Model.GenreName</div>
+
+    <div class="display-label">IsArchived</div>
+    <div class="display-field">@Model.IsArchived</div>
+
+    <div class="display-label">ArchivedDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.ArchivedDate)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.GenreId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

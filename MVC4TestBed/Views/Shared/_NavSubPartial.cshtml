@@ -1,0 +1,49 @@
+﻿@using MVC4TestBed.Models;
+
+<div class="container">
+		
+    <a href=@Url.Action("Index", "Home") class="brand">@ViewBag.Title</a>
+		
+    <a href="javascript:;" class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <i class="icon-reorder"></i>
+    </a>
+	
+    <div class="nav-collapse">
+        <ul id="main-nav" class="nav pull-right">
+
+@*            @if (Request.IsAuthenticated)
+            {
+                *@<li class="nav-icon @if (@ViewBag.NavMainMenu == Navigation.NavMainMenu.Home)
+                                    {
+                                        @Html.Raw("active")
+                                    }" >
+                    <a href="@Url.Action("Index", "Home")">
+                        <i class="icon-home"></i>
+                    </a>
+                </li>
+
+                <li class="nav-icon @if (@ViewBag.NavMainMenu == Navigation.NavMainMenu.Movies)
+                                    {
+                                        @Html.Raw("active")
+                                    }" >
+                    <a href="@Url.Action("Index", "Movies")">
+                        <i class="icon-film"></i>
+                        Movies
+                    </a>
+                </li>
+                <li class="nav-icon @if (@ViewBag.NavMainMenu == Navigation.NavMainMenu.Admin)
+                                    {
+                                        @Html.Raw("active")
+                                    }" >
+                    <a href="@Url.Action("Index", "Genres")">
+                        <i class="icon-tasks"></i>
+                        Admin
+                    </a>
+                </li>
+
+@*            } <!-- If Authenticated -->*@
+        </ul>
+			
+    </div> <!-- /.nav-collapse -->
+
+</div> <!-- /.container -->

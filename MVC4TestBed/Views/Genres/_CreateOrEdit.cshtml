@@ -1,0 +1,18 @@
+@model MVC4TestBed.Models.Genre
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="controls controls-row">
+
+    <div class="control-group span3 @if (!ViewData.ModelState.IsValidField("GenreName"))
+                                    {
+                                        @Html.Raw("error")
+                                    }">
+        @Html.LabelFor(model => model.GenreName, new {@class = "control-label"})
+        <div class="controls">
+            @Html.TextBoxFor(model => model.GenreName, new {@class = "span3"})
+            @Html.ValidationMessageFor(model => model.GenreName, null, new {@class = "help-inline"})
+        </div>
+    </div>
+
+</div>

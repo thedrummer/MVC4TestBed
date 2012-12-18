@@ -1,0 +1,51 @@
+﻿@model MVC4TestBed.Models.MovieSearch
+
+@using (Html.BeginForm("Index", "Movies", FormMethod.Get))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+                
+        <legend>Search Criteria
+            <i class="icon-chevron-up pull-right" id="showhide-toggle"></i>
+        </legend>
+        
+            <div class="controls controls-row">
+
+                <div class="span3 @if (!ViewData.ModelState.IsValidField("GenreId"))
+                                  {
+                                      @Html.Raw("error")
+                                  }">
+                    @Html.LabelFor(model => model.MovieSearchCriteria.GenreId, new {@class = "control-label"})
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.MovieSearchCriteria.GenreId, ((IEnumerable<MVC4TestBed.Models.Genre>) ViewBag.PossibleGenres).Select(option => new SelectListItem
+                            {
+                                Text = Html.DisplayTextFor(_ => option.GenreName).ToString(),
+                                Value = option.GenreId.ToString(),
+                                Selected = (Model != null) && (option.GenreId == Model.MovieSearchCriteria.GenreId)
+                            }), "<All>")
+                        @Html.ValidationMessageFor(model => model.MovieSearchCriteria.GenreId, null, new {@class = "help-block"})                        
+                    </div>
+                </div>
+
+                <div class="span3 @if (!ViewData.ModelState.IsValidField("SiteId"))
+                                  {
+                                      @Html.Raw("error")
+                                  }">
+                    @Html.LabelFor(model => model.MovieSearchCriteria.MovieTitle, new {@class = "control-label"})
+                    <div class="controls">
+                        @Html.EditorFor(model => model.MovieSearchCriteria.MovieTitle, new {@class = "span3"})
+                        @Html.ValidationMessageFor(model => model.MovieSearchCriteria.MovieTitle, null, new {@class = "help-block"})
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-secondary">Search</button>
+                <button type="reset" class="btn">Clear</button>
+            </div>
+            
+    </fieldset>
+}
+
