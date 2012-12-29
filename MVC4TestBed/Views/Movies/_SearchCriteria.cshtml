@@ -1,4 +1,4 @@
-﻿@model MVC4TestBed.Models.MovieSearch
+﻿@model MVC4TestBed.Models.MovieSearchVO
 
 @using (Html.BeginForm("Index", "Movies", FormMethod.Get))
 {
@@ -9,8 +9,8 @@
         <legend>Search Criteria
             <i class="icon-chevron-up pull-right" id="showhide-toggle"></i>
         </legend>
-        
-            <div class="controls controls-row">
+
+        <div class="controls controls-row">
 
                 <div class="span3 @if (!ViewData.ModelState.IsValidField("GenreId"))
                                   {
@@ -41,6 +41,10 @@
                 
             </div>
 
+            @* Hidden Sort Fields to retain Sort Order when Filtering *@        
+            @Html.Hidden("SortBy", Model.SortInfo.SortBy)
+            @Html.Hidden("SortAscending", Model.SortInfo.SortAscending)
+        
             <div class="form-actions">
                 <button type="submit" class="btn btn-secondary">Search</button>
                 <button type="reset" class="btn">Clear</button>

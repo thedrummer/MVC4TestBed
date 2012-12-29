@@ -11,7 +11,7 @@ namespace MVC4TestBed.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201212182027396_Version01"; }
+            get { return "201212232201545_Version01"; }
         }
         
         string IMigrationMetadata.Source

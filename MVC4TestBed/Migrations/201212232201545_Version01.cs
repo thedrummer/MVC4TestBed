@@ -42,12 +42,33 @@ namespace MVC4TestBed.Migrations
                 .ForeignKey("dbo.Genres", t => t.GenreId, cascadeDelete: true)
                 .Index(t => t.GenreId);
             
+            CreateTable(
+                "dbo.TemplateTests",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DateTimeField = c.DateTime(nullable: false),
+                        DateField = c.DateTime(nullable: false),
+                        EmailAddress = c.String(maxLength: 4000),
+                        Password = c.String(maxLength: 4000),
+                        Text = c.String(maxLength: 4000),
+                        NormalString = c.String(maxLength: 4000),
+                        Url = c.String(maxLength: 4000),
+                        TelNo = c.String(maxLength: 4000),
+                        LongText = c.String(maxLength: 4000),
+                        Month = c.Int(nullable: false),
+                        Week = c.Int(nullable: false),
+                        Currency = c.Single(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
             DropIndex("dbo.Movies", new[] { "GenreId" });
             DropForeignKey("dbo.Movies", "GenreId", "dbo.Genres");
+            DropTable("dbo.TemplateTests");
             DropTable("dbo.Movies");
             DropTable("dbo.Genres");
             DropTable("dbo.UserProfile");

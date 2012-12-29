@@ -1,0 +1,100 @@
+@model MVC4TestBed.Models.TemplateTest
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.DateTimeField)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.DateTimeField)
+    @Html.ValidationMessageFor(model => model.DateTimeField)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.DateField)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.DateField)
+    @Html.ValidationMessageFor(model => model.DateField)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.EmailAddress)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.EmailAddress)
+    @Html.ValidationMessageFor(model => model.EmailAddress)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Password)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Password)
+    @Html.ValidationMessageFor(model => model.Password)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Text)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Text)
+    @Html.ValidationMessageFor(model => model.Text)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NormalString)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NormalString)
+    @Html.ValidationMessageFor(model => model.NormalString)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Url)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Url)
+    @Html.ValidationMessageFor(model => model.Url)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TelNo)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TelNo)
+    @Html.ValidationMessageFor(model => model.TelNo)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.LongText)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.LongText)
+    @Html.ValidationMessageFor(model => model.LongText)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Month)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Month)
+    @Html.ValidationMessageFor(model => model.Month)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Week)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Week)
+    @Html.ValidationMessageFor(model => model.Week)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Currency)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Currency)
+    @Html.ValidationMessageFor(model => model.Currency)
+</div>
+

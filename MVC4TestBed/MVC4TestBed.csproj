@@ -170,13 +170,17 @@
     <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\TemplateTestsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201212182027396_Version01.cs" />
-    <Compile Include="Migrations\201212182027396_Version01.Designer.cs">
-      <DependentUpon>201212182027396_Version01.cs</DependentUpon>
+    <Compile Include="HelperClasses\Dynamic.cs" />
+    <Compile Include="HelperClasses\RouteValueDictionaryExtensions.cs" />
+    <Compile Include="HtmlHelpers\HtmlExtensions.cs" />
+    <Compile Include="Migrations\201212232201545_Version01.cs" />
+    <Compile Include="Migrations\201212232201545_Version01.Designer.cs">
+      <DependentUpon>201212232201545_Version01.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -185,6 +189,7 @@
     <Compile Include="Models\MovieRepository.cs" />
     <Compile Include="Models\MVC4TestBedContext.cs" />
     <Compile Include="Models\Navigation.cs" />
+    <Compile Include="Models\TemplateTestRepository.cs" />
     <Compile Include="Models\ViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -199,6 +204,9 @@
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\sort_asc.png" />
+    <Content Include="Content\images\sort_both.png" />
+    <Content Include="Content\images\sort_desc.png" />
     <Content Include="Content\login.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -289,6 +297,29 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\EditorTemplates\Week.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Text.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Search.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PhoneNumber.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Month.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime-Local.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Color.cshtml" />
+    <Content Include="Views\TemplateTests\Create.cshtml" />
+    <Content Include="Views\TemplateTests\Edit.cshtml" />
+    <Content Include="Views\TemplateTests\Delete.cshtml" />
+    <Content Include="Views\TemplateTests\Details.cshtml" />
+    <Content Include="Views\TemplateTests\Index.cshtml" />
+    <Content Include="Views\TemplateTests\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Shared\_ColumnLink.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -368,8 +399,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201212182027396_Version01.resx">
-      <DependentUpon>201212182027396_Version01.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201212232201545_Version01.resx">
+      <DependentUpon>201212232201545_Version01.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

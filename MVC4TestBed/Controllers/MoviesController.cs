@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using MVC4TestBed.Models;
+using System.Linq.Dynamic;
 
 namespace MVC4TestBed.Controllers
 {
@@ -26,38 +27,57 @@ namespace MVC4TestBed.Controllers
         //
         // GET: /Movies/
 
-        public ViewResult Index(MovieSearchCriteria movieSearchCriteria)
+        public ViewResult Index(MovieSearchCriteria movieSearchCriteria, PagingInfo pagingInfo, SortInfo sortInfo)
         {
+            // Filter Drop Down Lists
             var genres = _genreRepository.All.OrderBy(i => i.GenreName);
             ViewBag.PossibleGenres = genres;
 
-            IQueryable<Movie> movies;
+            IQueryable<Movie> items;
 
+            // Filter
             if (movieSearchCriteria != null)
             {
-                movies =
+                items =
                     _movieRepository.All.Where(
-                        i => (i.GenreId == movieSearchCriteria.GenreId || movieSearchCriteria.GenreId == 0))
-                                    .OrderBy(i => i.MovieTitle);
+                        i => (i.GenreId == movieSearchCriteria.GenreId || movieSearchCriteria.GenreId == 0));
                 if (!string.IsNullOrEmpty(movieSearchCriteria.MovieTitle))
                 {
-                    movies = movies.Where(i => i.MovieTitle.Contains(movieSearchCriteria.MovieTitle));
+                    items = items.Where(i => i.MovieTitle.Contains(movieSearchCriteria.MovieTitle));
                 }
             }
             else
             {
-                movies = _movieRepository.All.OrderBy(i => i.MovieTitle);
+                items = _movieRepository.All;
             }
 
+            // Paging & Sorting
+            if (string.IsNullOrEmpty(sortInfo.SortBy))
+            {
+                sortInfo.SortBy = "MovieTitle";
+            }
+
+            pagingInfo.TotalItems = items.Count();
+            pagingInfo.IndexStart = (pagingInfo.CurrentPage - 1) * pagingInfo.MaxPerPage;
+
+            var pagedResults = items
+                .OrderBy(sortInfo.SortExpression)
+                .Skip(pagingInfo.IndexStart)
+                .Take(pagingInfo.MaxPerPage);
+
+            pagingInfo.ItemsOnPage = pagedResults.Count();
+
             // Map DTO to ViewModel
-            var movieSearchResults = Mapper.Map<IEnumerable<Movie>, IEnumerable<MovieSearchResult>>(movies);
-            var movieSearch = new MovieSearch
+            var movieSearchResults = Mapper.Map<IEnumerable<Movie>, IEnumerable<MovieSearchResult>>(pagedResults);
+            var movieSearchVO = new MovieSearchVO
             {
                 MovieSearchCriteria = movieSearchCriteria,
+                PagingInfo = pagingInfo,
+                SortInfo = sortInfo,
                 MovieSearchResults = movieSearchResults
             };
 
-            return View(movieSearch);
+            return View(movieSearchVO);
         }
 
         //

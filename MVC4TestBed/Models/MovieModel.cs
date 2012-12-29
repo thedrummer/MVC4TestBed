@@ -9,6 +9,7 @@ namespace MVC4TestBed.Models
     public class Genre
     {
         [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         [Display(Name = "#")]
         public virtual int GenreId { get; set; }
 
@@ -26,6 +27,7 @@ namespace MVC4TestBed.Models
     public class Movie
     {
         [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         [Display(Name = "#")]
         public virtual int MovieId { get; set; }
 
@@ -49,5 +51,47 @@ namespace MVC4TestBed.Models
         public virtual bool IsArchived { get; set; }
 
         public virtual DateTime? ArchivedDate { get; set; }
+    }
+
+    public class TemplateTest
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public DateTime DateTimeField { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime DateField { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        public string EmailAddress { get; set; }
+
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [DataType(DataType.Text)]
+        public string Text { get; set; }
+
+        [DataType(DataType.Text)]
+        public string NormalString { get; set; }
+
+        [DataType(DataType.Url)]
+        public string Url { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        public string TelNo { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        public string LongText { get; set; }
+
+        public int Month { get; set; }
+
+        public int Week { get; set; }
+
+        [DataType(DataType.Currency)]
+        public float Currency { get; set; }
+
+
     }
 }

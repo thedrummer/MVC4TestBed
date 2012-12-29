@@ -1,26 +1,27 @@
-﻿@model MVC4TestBed.Models.MovieSearch
+﻿@using MVC4TestBed.HtmlHelpers
+@model MVC4TestBed.Models.MovieSearchVO
 
 <legend>Movies</legend>
 
-<table class="table table-bordered table-striped table-condensed">
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
-                Title
+                @Html.Partial("_ColumnLink", Model.SortInfo, new ViewDataDictionary {{"ColumnName", "MovieTitle"}, {"DisplayName", "Title"}})
             </th>
             <th>
-                Genre
+                @Html.Partial("_ColumnLink", Model.SortInfo, new ViewDataDictionary {{"ColumnName", "Genre.GenreName"}, {"DisplayName", "Genre"}})
             </th>
-            <th>
-                Year
+            <th class="column-right">
+                @Html.Partial("_ColumnLink", Model.SortInfo, new ViewDataDictionary {{"ColumnName", "Year"}, {"DisplayName", "Year"}})
             </th>
-            <th></th> <!-- Actions -->
+            <th class="column-center"></th> <!-- Actions -->
         </tr>
     </thead>
 
-    @foreach (var item in Model.MovieSearchResults)
-    {
-        <tbody>
+    <tbody>
+        @foreach (var item in Model.MovieSearchResults)
+        {
             <tr>
                 <td>
                     @item.MovieTitle
@@ -28,24 +29,34 @@
                 <td>
                     @item.Genre.GenreName
                 </td>
-                <td>
+                <td class="column-right">
                     @item.Year
                 </td>
-                <td>
-                    <a href="@Url.Action("Edit", "Movies", new {id = item.MovieId})" 
+                <td class="column-center">
+                    <a href="@Url.Action("Edit", "Movies", new {id = item.MovieId})" class="plain" 
                        rel="tooltip" data-placement="top" data-original-title="Edit">
                         <i class="icon-edit"></i>
                     </a>
-                    <a href="#deleteModal" data-toggle="modal"
+                    <span> </span>
+                    <a href="#deleteModal" class="plain" data-toggle="modal"
                        rel="tooltip" data-placement="top" data-original-title="Delete" class="delete">
                         <i class="icon-trash"></i>
                     </a>
                 </td>
             </tr>
-        </tbody>
-    } <!-- foreach -->
-
+        } <!-- foreach -->
+    </tbody>
 </table>
+
+<div class="pagination span5 pull-left">
+    <ul>
+        @Html.PageLinks(Model.PagingInfo)
+    </ul>
+</div>
+<div class="span5 pull-right">
+    @Model.PagingInfo.IndexLegend
+</div>
+
 
 <div class="modal hide fade" id="deleteModal" aria-hidden="true">
     
@@ -63,4 +74,3 @@
     </div>
 
 </div>
-

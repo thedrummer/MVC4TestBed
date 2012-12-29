@@ -18,5 +18,7 @@ namespace MVC4TestBed.Models
         public DbSet<Genre> Genres { get; set; }
 
         public DbSet<MVC4TestBed.Models.Movie> Movies { get; set; }
+
+        public DbSet<MVC4TestBed.Models.TemplateTest> TemplateTests { get; set; }
     }
 }

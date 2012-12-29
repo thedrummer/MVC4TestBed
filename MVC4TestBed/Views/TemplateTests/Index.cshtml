@@ -1,0 +1,101 @@
+@model IEnumerable<MVC4TestBed.Models.TemplateTest>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            DateTimeField
+        </th>
+        <th>
+            DateField
+        </th>
+        <th>
+            EmailAddress
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Text
+        </th>
+        <th>
+            NormalString
+        </th>
+        <th>
+            Url
+        </th>
+        <th>
+            TelNo
+        </th>
+        <th>
+            LongText
+        </th>
+        <th>
+            Month
+        </th>
+        <th>
+            Week
+        </th>
+        <th>
+            Currency
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+			@String.Format("{0:g}", item.DateTimeField)
+        </td>
+        <td>
+			@String.Format("{0:g}", item.DateField)
+        </td>
+        <td>
+			@item.EmailAddress
+        </td>
+        <td>
+			@item.Password
+        </td>
+        <td>
+			@item.Text
+        </td>
+        <td>
+			@item.NormalString
+        </td>
+        <td>
+			@item.Url
+        </td>
+        <td>
+			@item.TelNo
+        </td>
+        <td>
+			@item.LongText
+        </td>
+        <td>
+			@item.Month
+        </td>
+        <td>
+			@item.Week
+        </td>
+        <td>
+			@item.Currency
+        </td>
+    </tr>
+}
+
+</table>
+
+
